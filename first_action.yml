@@ -1,0 +1,10 @@
+name: First Workflow          # name is a in built identifier
+on: workflow_dispatch  #add pre defined event (workflow_dispatch) in github. it manualy trigger this workflow. on is in built identifier
+jobs:                           # job is in built identifier
+  first-job: 
+    runs-on: ubuntu-latest    # runs-on is a in built identifier
+     steps:
+       - name: Print Greeings
+         run: echo "Hello Github Actions"
+       - name: Print Goo Bye
+         run: echo " Just take it as Bye"
