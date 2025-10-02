@@ -16,6 +16,8 @@ jobs:
           - name: 'Use gcloud CLI'
           
             run: |
-               gcloud auth list
-               gcloud auth activate-service-account --key-file=${{ secrets.GOOGLE_CREDENTIALS }}
-               gcloud auth list
+              gcloud auth list
+              echo "${{ secrets.GOOGLE_CREDENTIALS }}" > /tmp/key.json
+              gcloud auth activate-service-account --key-file=/tmp/key.json
+              gcloud config set project YOUR_GCP_PROJECT_ID 
+              gcloud auth list
