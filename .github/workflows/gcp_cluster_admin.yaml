@@ -14,10 +14,13 @@ jobs:
 
      - name: Authenticate to Gcloud
        uses: google-github-actions/auth@v3
+       env:
+         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
        with:
-         credentials_json: ${{ secrets.GCP_SA_KEY }}
-         service_account: kubernetes-cluster-admin@fabled-era-467617-p0.iam.gserviceaccount.com
 
+         credentials_json: '${{ secrets.GCP_SA_KEY }}'
+         service_account: kubernetes-cluster-admin@fabled-era-467617-p0.iam.gserviceaccount.com
+  
      - name: Configure SDK Cloud
        uses: google-github-actions/setup-gcloud@v2
 
