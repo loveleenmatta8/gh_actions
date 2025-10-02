@@ -22,13 +22,14 @@ jobs:
 
      - name: Create GKE CLuster on loveleenmatta account
        run:  |
+         
          gcloud container clusters create lm-gke-cluster \
           --zone=us-central1-a \
           --num-nodes=1 \
           --machine-type=e2-micro \
-          --project=testloveleen
+          --project=fabled-era-467617-p0
        env:
-        GCP_PROJECT_ID: testloveleen
+        GCP_PROJECT_ID: fabled-era-467617-p0
 
      
      
