@@ -8,6 +8,7 @@ jobs:
           - id: 'auth'
             uses: 'google-github-actions/auth@v3'
             with:
-              credentials_json: '${{ secrets.GCP_SA_KEY }}'
+              
+              service_account: kubernetes-cluster-admin@fabled-era-467617-p0.iam.gserviceaccount.com
           - name: 'Use gcloud CLI'
             run: 'gcloud auth list'
