@@ -22,7 +22,7 @@ jobs:
 
      - name: Create GKE CLuster on loveleenmatta account
        run:  |
-         
+         echo ${{secrets.GCP_SA_KEY}}
          gcloud container clusters create lm-gke-cluster \
           --zone=us-central1-a \
           --num-nodes=1 \
