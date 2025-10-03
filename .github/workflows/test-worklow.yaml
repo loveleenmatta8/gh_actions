@@ -18,9 +18,12 @@ jobs:
             run: |
               command -v jq && echo "jq command is working fine" || echo "jq is not installed" 
               gcloud auth list
-              cat "${{ secrets.GOOGLE_CREDENTIALS }}" > /tmp/key.json
-              cat /tmp/key.json 
+              #cat "${{ secrets.GOOGLE_CREDENTIALS }}" > /tmp/key.json
+              #cat /tmp/key.json 
               
-              #gcloud auth activate-service-account --key-file=/tmp/key.json
-              #gcloud config set project YOUR_GCP_PROJECT_ID 
-              #gcloud auth list
+              #gcloud auth activate-service-account --key-file="${{ secrets.GOOGLE_CREDENTIALS }}"
+              ##gcloud config set project YOUR_GCP_PROJECT_ID 
+              ##gcloud auth list
+
+                  echo "$GOOGLE_CREDENTIALS" > /tmp/gcp-key.json
+                  gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
