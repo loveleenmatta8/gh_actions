@@ -1,0 +1,23 @@
+name: Create GKE Cluster
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-gke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: fabled-era-467617-p0
+          service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Create GKE Cluster
+        run: |
+          gcloud container clusters create lm-gke-cluster \
+            --zone us-central1-a \
+            --num-nodes 3
