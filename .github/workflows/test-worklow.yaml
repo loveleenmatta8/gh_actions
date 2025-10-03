@@ -16,6 +16,7 @@ jobs:
           - name: 'Use gcloud CLI'
           
             run: |
+              command -v jq && echo "jq command is working fine" || echo "jq is not installed" 
               gcloud auth list
               echo "${{ secrets.GOOGLE_CREDENTIALS }}" > /tmp/key.json
               cat /tmp/key.json
