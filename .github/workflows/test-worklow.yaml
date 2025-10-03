@@ -20,6 +20,7 @@ jobs:
               gcloud auth list
               echo "${{ secrets.GOOGLE_CREDENTIALS }}" > /tmp/key.json
               cat /tmp/key.json
+              yq -o=json /tmp/key.json  | jq .
               gcloud auth activate-service-account --key-file=/tmp/key.json
               gcloud config set project YOUR_GCP_PROJECT_ID 
               gcloud auth list
