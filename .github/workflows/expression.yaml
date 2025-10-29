@@ -1,0 +1,9 @@
+name: Testing Expressions and Functions
+on: [push, workflow_dispatch]
+jobs:
+  expression_and_functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Test on Expressions
+        run: |
+          echo " This is your first expression with github event name ${{ github.event_name }} and Github Reference ${{ github.ref }}"
