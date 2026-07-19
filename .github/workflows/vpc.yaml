@@ -1,37 +1,38 @@
-name: Connection with VPC on loveleenmatta2 account
-on:
-  workflow_dispatch:
+  name: Connection with VPC on loveleenmatta2 account
+  on:
+    workflow_dispatch:
 
-jobs:
-  vpc-connection:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
-      id-token: write
+  jobs:
+    vpc-connection:
+      runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        issues: write
+        id-token: write
 
-    steps:
-     - name: checkout code
-       uses: actions/checkout@v3
+      steps:
+      - name: checkout code
+        uses: actions/checkout@v3
 
-     - name: Authenticate to Gcloud
-       uses: google-github-actions/auth@v3
-       with:
-         #credentials_json: '${{ secrets.GCP_SA_KEY }}'
-         project_id: project-22b32090-5bb2-4730-a69
-         workload_identity_provider: 'projects/145229495924/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
+      - name: Authenticate to Gcloud
+        uses: google-github-actions/auth@v3
+        with:
+          #credentials_json: '${{ secrets.GCP_SA_KEY }}'
+          project_id: project-22b32090-5bb2-4730-a69
+          workload_identity_provider: 'projects/145229495924/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
+          service_account: 'github-action-loveleen@project-22b32090-5bb2-4730-a69.iam.gserviceaccount.com
 
-     - name: gcloud auth list
-       run:  'gcloud auth list'
-  
-     - name: Configure SDK Cloud
-       uses: google-github-actions/setup-gcloud@v2
+      - name: gcloud auth list
+        run:  'gcloud auth list'
+    
+      - name: Configure SDK Cloud
+        uses: google-github-actions/setup-gcloud@v2
 
-     - name: Create VPC on loveleenmatta2 account
-       run:  |
-        gcloud compute networks create lm-vpc \
-          --subnet-mode=custom \
-          --bgp-routing-mode=regional \
-          --project=${{ env.GCP_PROJECT_ID }}
-       env:
-        GCP_PROJECT_ID: project-22b32090-5bb2-4730-a69
+      - name: Create VPC on loveleenmatta2 account
+        run:  |
+          gcloud compute networks create lm-vpc \
+            --subnet-mode=custom \
+            --bgp-routing-mode=regional \
+            --project=${{ env.GCP_PROJECT_ID }}
+        env:
+          GCP_PROJECT_ID: project-22b32090-5bb2-4730-a69
