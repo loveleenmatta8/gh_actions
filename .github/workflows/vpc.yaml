@@ -1,12 +1,13 @@
 name: Connection with VPC on loveleenmatta2 account
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+
 jobs:
   vpc-connection:
     runs-on: ubuntu-latest
+  permissions:
+      contents: read
+      issues: write
 
     steps:
      - name: checkout code
