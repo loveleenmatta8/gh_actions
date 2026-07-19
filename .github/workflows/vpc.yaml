@@ -27,13 +27,11 @@ jobs:
      - name: Configure SDK Cloud
        uses: google-github-actions/setup-gcloud@v2
 
-    #  - name: Create VPC connection on loveleenmatta2 account
-    #    run:  |
-    #     gcloud compute networks peerings create lm-vpc-connection \
-    #     --network=lm-vpc \
-    #     --peer-project=fabled-era-467617-p0 \
-    #     --peer-network=default \
-    #     --auto-create-routes \
-    #     --project=project-22b32090-5bb2-4730-a69  
-    #    env:
-    #     GCP_PROJECT_ID: project-22b32090-5bb2-4730-a69
+     - name: Create VPC on loveleenmatta2 account
+       run:  |
+        gcloud compute networks create lm-vpc \
+          --subnet-mode=custom \
+          --bgp-routing-mode=regional \
+          --project=${{ env.GCP_PROJECT_ID }}
+       env:
+        GCP_PROJECT_ID: project-22b32090-5bb2-4730-a69
