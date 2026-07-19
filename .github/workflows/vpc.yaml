@@ -5,7 +5,7 @@ on:
 jobs:
   vpc-connection:
     runs-on: ubuntu-latest
-  permissions:
+    permissions:
       contents: read
       issues: write
 
