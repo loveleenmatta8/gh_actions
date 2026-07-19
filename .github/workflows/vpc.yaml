@@ -18,6 +18,7 @@ jobs:
        uses: google-github-actions/auth@v3
        with:
          #credentials_json: '${{ secrets.GCP_SA_KEY }}'
+         project_id: project-22b32090-5bb2-4730-a69
          workload_identity_provider: 'projects/145229495924/locations/global/workloadIdentityPools/github-actions/providers/github-provider'
 
      - name: gcloud auth list
